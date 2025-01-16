@@ -23,13 +23,27 @@ def poser_question(questions=questions):
     # Fonction qui pose la question avec plusieurs choix; recupére la réponse utilisateur et compte le score
     id = id_question(questions, id_questions_posees)
     print(questions.iloc[id,1])
+
     answers = list(questions.iloc[id,2:])
     answer = answers[0]
     answers_shuffle = answers.copy()
     rd.shuffle(answers_shuffle)
     for i in range(len(answers_shuffle)):
         print(f"{(i+1)}) {answers_shuffle[i]}")
-    user_answer = int(input("Quelle est votre réponse ? "))
+    
+    while True:
+        try:
+            user_answer = input("Quelle est votre réponse ? ")
+            if user_answer not in ["1","2","3","4"]:
+                raise IndexError("La valeur doit être 1, 2, 3 ou 4.")
+            break
+        except (ValueError, IndexError) as e:
+            print(f"Entrée invalide : {e}. Veuillez réessayer.")
+
+    print(f"Vous avez choisi : {user_answer}")
+
+    user_answer=int(user_answer)
+
     print(answers_shuffle[user_answer-1])
     if answers_shuffle[int(user_answer)-1] == answer : 
         print("Bien joué :)\n")
