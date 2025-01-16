@@ -9,7 +9,6 @@ questions = pd.read_csv("Questions.csv", sep =";")
 score = 0
 id_questions_posees = set()
 
-
 def id_question(questions=questions, id_questions_posees=id_questions_posees):
     # Fonction qui retourne l'id d'une question a poser
     nbr_questions = len(questions)
@@ -19,7 +18,8 @@ def id_question(questions=questions, id_questions_posees=id_questions_posees):
     id_questions_posees.add(id)
     return id
 
-def poser_question(questions=questions, score=score):
+def poser_question(questions=questions):
+    global score
     # Fonction qui pose la question avec plusieurs choix; recupére la réponse utilisateur et compte le score
     id = id_question(questions, id_questions_posees)
     print(questions.iloc[id,1])
@@ -36,7 +36,9 @@ def poser_question(questions=questions, score=score):
         score +=1
     else : print(f"FAUX FAUX FAUX ! La bonne réponse était : {answer}\n")
 
+
 def quizz():
+    # Fonction qui lannce le jeu
     print("BIENVENUE DANS ... le quizz.\n")
     print("Enchainez une serie de 5 questions et tentez d'obtenir le meilleur score.\n")
     for i in range(5):
