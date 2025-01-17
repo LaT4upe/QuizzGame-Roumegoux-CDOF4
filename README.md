@@ -1,5 +1,5 @@
 # QuizzGame-Roumegoux-CDOF4
-Hy, this is a repo for r Decentralization Technologies TD1
+Hy, this is a repo for a Decentralization Technologies TD1
 
 This repo contains a simple Quizz Game made in python.
 
